@@ -23,8 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     SFT_T(
-     KC_CAPS), KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_INS,          KC_DEL,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_CAPS),
+     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_DEL,           KC_INS,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_LGUI, RAISE,   KC_ENT,                    KC_SPC,  RAISE,   KC_RALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -48,11 +47,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                              KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_GRV, RGB_MOD, KC_MUTE,  KC_VOLU, KC_MPLY, KC_LBRC,                           KC_RBRC,  _______, KC_UP,   _______, _______, KC_HOME,
+     KC_GRV,  _______, _______,  KC_MPLY, _______, KC_LBRC,                           KC_RBRC,  _______, KC_UP,   _______, _______, KC_HOME,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     RESET,  RGB_RMOD, KC_MPRV, KC_VOLD, KC_MNXT, KC_EQL,                            KC_MINS,  KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_END,
+     RESET,   KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_EQL,                             KC_MINS,  KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_END,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TRNS, RGB_TOG, RGB_SPD, RGB_SPI, RGB_VAD, RGB_VAI, KC_PGDN,          KC_PGUP, RGB_HUD, RGB_HUI,  RGB_SAD, RGB_SAI, _______, KC_TRNS,
+     KC_TRNS, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, KC_PGDN,          KC_PGUP, _______, _______, _______, _______, _______, KC_TRNS,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -129,3 +128,6 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
     }
 }
+
+const uint16_t PROGMEM caps_combo[] = {KC_LSFT, KC_RSFT, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {COMBO(caps_combo, KC_CAPS)};
